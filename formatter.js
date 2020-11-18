@@ -1,3 +1,18 @@
+// Call this function in Google Sheets
+function BRANCHEMAILS(fwdRange, dstRange) {
+  var emailArray = getSubgroups(fwdRange, dstRange);
+  var fwdEmail;
+
+  // iterate through subgroups and concatenate them
+  let emails = '';
+  for (var i = 0; i < emailArray.length; i++) {
+    for (var j = 0; j < emailArray[i].length; j++){
+      emails += emailArray[i][j] + '\n';    
+    }
+  }
+  return emails;
+}
+
 function getSubgroups(fwdRange, dstRange) {
   var emailArray = [];
   var currentFwdEmail = '';
@@ -30,22 +45,6 @@ function getSubgroups(fwdRange, dstRange) {
 
   return emailArray
 }
-
-
-function BRANCHEMAILS2(fwdRange, dstRange) {
-  var emailArray = getSubgroups(fwdRange, dstRange);
-  var fwdEmail;
-
-  // iterate through subgroups and concatenate them
-  let emails = '';
-  for (var i = 0; i < emailArray.length; i++) {
-    for (var j = 0; j < emailArray[i].length; j++){
-      emails += emailArray[i][j] + '\n';    
-    }
-  }
-  return emails;
-}
-
 
 
 function branchHelper(fwdPrefix, dstArray, level = 1) {
